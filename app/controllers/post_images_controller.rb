@@ -15,7 +15,7 @@ class PostImagesController < ApplicationController
   
     
   def index
-    post_images = PostImage.all
+    @post_images = PostImage.page(params[:page])
     
   end
 
@@ -25,7 +25,6 @@ class PostImagesController < ApplicationController
   end
   
   def destroy
-    post_image = PostImage.find(params[:id])
     post_image.destroy
     redirect_to post_image_path(@post_image[:id])
   end
